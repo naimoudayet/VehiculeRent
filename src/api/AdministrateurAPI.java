@@ -63,9 +63,7 @@ public class AdministrateurAPI implements AdministrateurDAO {
 
         try {
 
-            UtilisateurAPI utilisateurAPI = new UtilisateurAPI();
-
-            String id_utilisateur = utilisateurAPI.create(administrateur.getUtilisateur());
+            String id_utilisateur = new UtilisateurAPI().create(administrateur.getUtilisateur());
 
             sql = "INSERT INTO administrateur(id, id_utilisateur, email, mot_de_passe)"
                     + "VALUES ( '" + id + "', "

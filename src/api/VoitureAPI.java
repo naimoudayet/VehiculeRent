@@ -1,7 +1,7 @@
 package api;
 
 import config.Database;
-import dao.ClientDAO;
+import dao.VoitureDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.Client;
-import models.Utilisateur;
+import models.Vehicule;
+import models.Voiture;
 
-public class ClientAPI implements ClientDAO {
+public class VoitureAPI implements VoitureDAO {
 
     private Database db;
     private Connection connection;
@@ -23,7 +23,7 @@ public class ClientAPI implements ClientDAO {
     private ResultSet resultSet;
     private String sql;
 
-    public ClientAPI() {
+    public VoitureAPI() {
         try {
 
             db = new Database();
@@ -36,17 +36,17 @@ public class ClientAPI implements ClientDAO {
     }
 
     @Override
-    public void create(Client client) {
+    public void create(Voiture voiture) {
 
         String id = UUID.randomUUID().toString();
 
         try {
-  
-            String id_utilisateur = new UtilisateurAPI().create(client.getUtilisateur());
 
-            sql = "INSERT INTO client(id, id_utilisateur)"
+            new VehiculeAPI().create(voiture.getVehicule());
+
+            sql = "INSERT INTO voiture(id, matricule)"
                     + "VALUES ( '" + id + "', "
-                    + " '" + id_utilisateur + "')";
+                    + " '" + voiture.getVehicule().getMatricule() + "')";
 
             statement.execute(sql);
 
@@ -57,78 +57,80 @@ public class ClientAPI implements ClientDAO {
     }
 
     @Override
-    public void update(Client client) {
-        new UtilisateurAPI().update(client.getUtilisateur());
+    public void update(Voiture voiture) {
+        new VehiculeAPI().update(voiture.getVehicule());
     }
 
     @Override
-    public void delete(Client client) {
-        new UtilisateurAPI().delete(client.getUtilisateur().getId());
+    public void delete(Voiture voiture) {
+        new VehiculeAPI().delete(voiture.getVehicule().getMatricule());
     }
 
     @Override
-    public List<Client> readAll() {
-        List<Client> clients = new ArrayList<>();
+    public List<Voiture> readAll() {
+        List<Voiture> voitures = new ArrayList<>();
 
         try {
 
-            sql = "SELECT c.id as id_client, u.* FROM client c, utilisateur u WHERE c.id_utilisateur = u.id ORDER BY u.nom ASC";
+            sql = "SELECT vo.id, ve.* FROM voiture vo, vehicule ve WHERE vo.matricule = ve.matricule ORDER BY ve.matricule ASC";
 
             resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-
-                Client c = new Client(
+                Voiture v = new Voiture(
                         resultSet.getString(1),
-                        new Utilisateur(
+                        new Vehicule(
                                 resultSet.getString(2),
                                 resultSet.getString(3),
                                 resultSet.getString(4),
                                 resultSet.getString(5),
-                                resultSet.getString(6)
+                                resultSet.getString(6),
+                                resultSet.getInt(7),
+                                resultSet.getInt(8)
                         )
                 );
 
-                clients.add(c);
+                voitures.add(v);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(AdministrateurAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return clients;
+        return voitures;
     }
 
     @Override
-    public Client read(String id) {
-        Client client = null;
+    public Voiture read(String id) {
+        Voiture voiture = null;
 
         try {
 
-            sql = "SELECT c.id as id_client, u.* FROM client c, utilisateur u "
-                    + "WHERE c.id_utilisateur = u.id AND c.id = '" + id + "' "
-                    + "ORDER BY u.nom ASC";
+            sql = "SELECT vo.id, ve.* FROM voiture vo, vehicule ve WHERE vo.matricule = ve.matricule AND vo.id = '" + id + "'";
 
             resultSet = statement.executeQuery(sql);
 
             if (resultSet.next()) {
-                client = new Client(
+                voiture = new Voiture(
                         resultSet.getString(1),
-                        new Utilisateur(
+                        new Vehicule(
                                 resultSet.getString(2),
                                 resultSet.getString(3),
                                 resultSet.getString(4),
                                 resultSet.getString(5),
-                                resultSet.getString(6)
+                                resultSet.getString(6),
+                                resultSet.getInt(7),
+                                resultSet.getInt(8)
                         )
                 );
+
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(AdministrateurAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return client;
+        return voiture;
     }
 
 }

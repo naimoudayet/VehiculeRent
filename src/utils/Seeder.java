@@ -3,10 +3,12 @@ package utils;
 import api.AdministrateurAPI;
 import api.ClientAPI;
 import api.UtilisateurAPI;
+import api.VehiculeAPI;
 import java.util.List;
 import models.Administrateur;
 import models.Client;
 import models.Utilisateur;
+import models.Vehicule;
 
 public class Seeder {
 
@@ -57,6 +59,19 @@ public class Seeder {
             System.out.println("Client: " + c.toString());
         }*/
         // read
-        System.out.println("Client: " + clientAPI.read("8f437b05-6e4b-4ddf-b584-3f8c8fde0469"));
+        //System.out.println("Client: " + clientAPI.read("8f437b05-6e4b-4ddf-b584-3f8c8fde0469"));
+        // test vehicule
+        VehiculeAPI vehiculeAPI = new VehiculeAPI();
+        // create vehicule
+        /*vehiculeAPI.create(
+                new Vehicule("12TN1234", "Marque", "Modele", "Puissance", "Assurance", 0, 0)
+        );*/
+
+        // update vehicule
+        /*vehiculeAPI.update(
+                new Vehicule("12TN1234", "", "", "", "", 0, 0)
+        );*/
+        // delete vehicule
+        vehiculeAPI.delete("12TN1234");
     }
 }

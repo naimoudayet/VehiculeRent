@@ -16,8 +16,7 @@ public class UtilisateurAPI implements UtilisateurDAO {
     private Database db;
     private Connection connection;
     private Statement statement;
-
-    private ResultSet resultSet;
+ 
     private String sql;
 
     public UtilisateurAPI() {
