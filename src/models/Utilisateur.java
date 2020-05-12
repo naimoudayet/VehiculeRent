@@ -6,14 +6,21 @@ public class Utilisateur {
     private String numCin;
     private String nom;
     private String prenom;
-    private String num_Tel;
+    private String numTel;
 
-    public Utilisateur(String id, String numCin, String nom, String prenom, String num_Tel) {
+    public Utilisateur(String id, String numCin, String nom, String prenom, String numTel) {
         this.id = id;
         this.numCin = numCin;
         this.nom = nom;
         this.prenom = prenom;
-        this.num_Tel = num_Tel;
+        this.numTel = numTel;
+    }
+    
+    public Utilisateur(String numCin, String nom, String prenom, String numTel) {
+        this.numCin = numCin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numTel = numTel;
     }
 
     public Utilisateur() {
@@ -51,12 +58,18 @@ public class Utilisateur {
         this.prenom = prenom;
     }
 
-    public String getNum_Tel() {
-        return num_Tel;
+    public String getNumTel() {
+        return numTel;
     }
 
-    public void setNum_Tel(String num_Tel) {
-        this.num_Tel = num_Tel;
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
     }
 
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "id=" + id + ", numCin=" + numCin + ", nom=" + nom + ", prenom=" + prenom + ", numTel=" + numTel + '}';
+    }
+
+   
 }

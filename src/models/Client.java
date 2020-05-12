@@ -1,12 +1,16 @@
 package models;
 
-public class Client{
-    
+public class Client {
+
     private String id;
     private Utilisateur utilisateur;
 
     public Client(String id, Utilisateur utilisateur) {
         this.id = id;
+        this.utilisateur = utilisateur;
+    }
+
+    public Client(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
 
@@ -28,5 +32,10 @@ public class Client{
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
-     
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", utilisateur=" + utilisateur.toString() + '}';
+    }
+
 }
