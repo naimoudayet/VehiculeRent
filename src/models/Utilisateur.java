@@ -23,6 +23,12 @@ public class Utilisateur {
         this.numTel = numTel;
     }
 
+    public Utilisateur(String nom, String prenom, String numTel) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numTel = numTel;
+    }
+    
     public Utilisateur() {
     }
 

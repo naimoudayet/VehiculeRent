@@ -20,9 +20,13 @@ public class Vehicule {
         this.penalisationJour = penalisationJour;
     }
 
+    public Vehicule(String matricule) {
+        this.matricule = matricule;
+    }
+ 
     public Vehicule() {
     }
-
+  
     public String getMatricule() {
         return matricule;
     }
