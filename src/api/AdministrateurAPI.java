@@ -36,17 +36,12 @@ public class AdministrateurAPI implements AdministrateurDAO {
     public boolean login(Administrateur administrateur) {
 
         try {
-            sql = "SELECT u.* FROM administrateur a, utilisateur u "
-                    + " WHERE a.email = '" + administrateur.getEmail()
-                    + "' AND a.mot_de_passe = '" + administrateur.getMotDePasse() + "'";
+            sql = "SELECT * FROM administrateur "
+                    + " WHERE email = '" + administrateur.getEmail()
+                    + "' AND mot_de_passe = '" + administrateur.getMotDePasse() + "' ";
 
             resultSet = statement.executeQuery(sql);
 
-            /*if( resultSet.next ){
-                return true;
-            }else{
-                return false;
-            }*/
             return resultSet.next();
 
         } catch (SQLException ex) {

@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/dao/VehiculeDAO.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/api/BusAPI.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/api/ClientAPI.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/dao/ClientDAO.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/api/AdministrateurAPI.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/dao/UtilisateurDAO.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/api/VehiculeAPI.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/dao/BusDAO.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/api/VoitureAPI.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/api/UtilisateurAPI.java</file>
-            <file>file:/C:/Users/naim_/Documents/NetBeansProjects/VehiculeRent/src/dao/VoitureDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
